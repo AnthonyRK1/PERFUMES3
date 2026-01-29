@@ -1,0 +1,188 @@
+:root {
+    --gold: #c5a059;
+    --gold-light: #e2d1c3;
+    --dark: #1a1a1a;
+    --glass: rgba(255, 255, 255, 0.7);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: radial-gradient(circle at top right, #ffffff, #f3ede7);
+    height: 100vh;
+    height: 100dvh; /* Para móviles */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Fondo decorativo animado */
+body::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: url('https://www.transparenttextures.com/patterns/silk-weave.png');
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 1000px; /* Ancho máximo de lectura elegante */
+    z-index: 1;
+}
+
+header {
+    padding: 40px 20px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, white, transparent);
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+header h1 span { color: var(--gold); }
+
+.subtitle {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.chat-window {
+    flex: 1;
+    padding: 20px 40px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    scroll-behavior: smooth;
+}
+
+/* Personalización Scrollbar */
+.chat-window::-webkit-scrollbar { width: 4px; }
+.chat-window::-webkit-scrollbar-thumb { background: var(--gold-light); border-radius: 10px; }
+
+.message {
+    max-width: 70%;
+    padding: 18px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    line-height: 1.6;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: white;
+    color: #333;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.user-message {
+    align-self: flex-end;
+    background: var(--dark);
+    color: white;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.input-area {
+    padding: 40px;
+    background: linear-gradient(to top, white 60%, transparent);
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 12px 12px 12px 30px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#user-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: var(--dark);
+}
+
+#send-btn {
+    background: var(--dark);
+    color: white;
+    border: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#send-btn:hover {
+    background: var(--gold);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    margin: 15px 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilo para las negritas que el asistente genere */
+.message b {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .chat-window { padding: 20px; }
+    .message { max-width: 90%; }
+    header h1 { font-size: 2.2rem; }
+    .input-area { padding: 20px; }
+
+ 
+
+
+}
